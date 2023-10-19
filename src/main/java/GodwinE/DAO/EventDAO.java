@@ -1,9 +1,12 @@
 package GodwinE.DAO;
 
+import GodwinE.entities.Concert;
 import GodwinE.entities.Event;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 import java.util.UUID;
 
 public class EventDAO {
@@ -45,5 +48,17 @@ public class EventDAO {
         }else{
             System.out.println(id + " not found");
         }
+    }
+
+    public List<Concert> getConcertInStreaming(boolean result)
+    {
+        TypedQuery<Concert> getConcertQuery = entityManagerFactory.createQuery("SELECT concert FROM Concert WHERE state = :result", Concert.class);
+        return getConcertQuery.getResultList();
+    }
+
+    public List<Concert> getConcertInStreaming(String genre)
+    {
+        TypedQuery<Concert> getConcertiPerGenere = entityManagerFactory.createQuery("SELECT concert FROM Concert WHERE genre = :genre", Concert.class);
+        return getConcertiPerGenere.getResultList();
     }
 }

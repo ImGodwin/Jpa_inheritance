@@ -1,5 +1,6 @@
 package GodwinE.entities;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 public class AthleticsCompetition extends Event{
@@ -7,7 +8,9 @@ public class AthleticsCompetition extends Event{
     private Set<Person> athletes;
     private Person winner;
 
-    public AthleticsCompetition(Set<Person> athletes, Person winner) {
+    public AthleticsCompetition(String title, LocalDate date, String description, EventType eventtype,
+                                int maxNumOfParticipants, Set<Person> athletes, Person winner) {
+        super(title, date, description, eventtype, maxNumOfParticipants);
         this.athletes = athletes;
         this.winner = winner;
     }

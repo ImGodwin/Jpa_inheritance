@@ -2,6 +2,7 @@ package GodwinE.entities;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import java.time.LocalDate;
 
 @Entity
 @DiscriminatorValue("Football Match")
@@ -13,7 +14,10 @@ public class FootballMatch extends Event{
     private int goalsScored;
     private int goalsByAwayTeam;
 
-    public FootballMatch(String homeTeam, String awayTeam, String winner, int goalsScored, int goalsByAwayTeam) {
+    public FootballMatch(String title, LocalDate date, String description,
+                         EventType eventtype, int maxNumOfParticipants, String homeTeam, String awayTeam, String winner,
+                         int goalsScored, int goalsByAwayTeam) {
+        super(title, date, description, eventtype, maxNumOfParticipants);
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.winner = winner;
