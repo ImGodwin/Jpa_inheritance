@@ -24,11 +24,11 @@ public abstract class Event {
     @Column(nullable = false, length = 30)
     private int maxNumOfParticipants;
 
-    @Column(nullable = false, length = 30)
+    //@Column(nullable = false, length = 30)
     @OneToOne(mappedBy = "event")
     private Location location;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "event")
     @OrderBy("title ASC")
     private Set<Participation> participants;
 

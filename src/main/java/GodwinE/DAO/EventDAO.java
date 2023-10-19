@@ -2,9 +2,11 @@ package GodwinE.DAO;
 
 import GodwinE.entities.Concert;
 import GodwinE.entities.Event;
+import GodwinE.entities.FootballMatch;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.UUID;
@@ -60,5 +62,13 @@ public class EventDAO {
     {
         TypedQuery<Concert> getConcertiPerGenere = entityManagerFactory.createQuery("SELECT concert FROM Concert WHERE genre = :genre", Concert.class);
         return getConcertiPerGenere.getResultList();
+    }
+
+    //#2
+
+    public List<FootballMatch> getMatchesWonAtHome(String games){
+        Query matchesWonAtHome = entityManagerFactory.createQuery("SELECT COUNT(FootballMatch) FROM " +
+                "FootballMatch WHERE FootballMatch.homeTeam = games");
+        return matchesWonAtHome;
     }
 }
