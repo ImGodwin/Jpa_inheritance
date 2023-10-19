@@ -6,8 +6,10 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "events")
-public class Event {
+@DiscriminatorColumn(name = "football-games")
+public abstract class Event {
 
     @Id
     @GeneratedValue
